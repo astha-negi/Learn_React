@@ -1,0 +1,8 @@
+@import "tailwindcss"; 
+
+/* Remove Vite default centering: */
+body {
+  margin: 0;
+  padding: 0;
+}
+
