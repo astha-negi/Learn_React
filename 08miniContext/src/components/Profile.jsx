@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import UserContext from '../context/UserContext';
 
 function Profile() {
+  // Getting the user data from context.
   const { user } = useContext(UserContext);
 
   if (!user) {

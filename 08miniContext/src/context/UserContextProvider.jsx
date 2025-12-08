@@ -1,13 +1,21 @@
 import React from "react";
-import UserContext from "./UserContext";
+import UserContext from "./UserContext";   // Import the context object
 
-const UserContextProvider = ({children})=>{
+// This component will wrap the entire app and provide user-related data
+const UserContextProvider = ({ children }) => {
+
+    // Create a state variable `user` and a function `setUser` to update it.
     const [user, setUser] = React.useState(null);
+
     return (
-        <UserContext.Provider value={{user, setUser}}>
+        // The Provider makes the `user` and `setUser` available to all components
+        <UserContext.Provider value={{ user, setUser }}>
+            
+            {/* Render any child components inside this Provider */}
             {children}
+
         </UserContext.Provider>
-    )
+    );
 }
 
 export default UserContextProvider;
