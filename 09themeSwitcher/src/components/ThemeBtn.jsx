@@ -2,24 +2,33 @@ import React from 'react'
 import useTheme from '../Context/Theme';
 
 export default function ThemeBtn() {
-    const {themeMode, lightTheme, darkTheme}= useTheme()
-    const onChangeBtn= (e)=>{
-        const darkModeStatus= e.currentTarget.checked;
-        if(darkModeStatus){
-            darkTheme();
-        }else{
-            lightTheme();
+
+    // 1️⃣ Getting theme values & functions from ThemeContext
+    const { themeMode, lightTheme, darkTheme } = useTheme();
+
+    // 2️⃣ Toggle handler to switch between light & dark mode
+    const onChangeBtn = (e) => {
+        const darkModeStatus = e.currentTarget.checked;
+
+        if (darkModeStatus) {
+            darkTheme();     // If toggle is ON → switch to dark mode
+        } else {
+            lightTheme();    // If toggle is OFF → switch to light mode
         }
-    }
+    };
+
     return (
         <label className="relative inline-flex items-center cursor-pointer">
+
+            {/* 3️⃣ Checkbox to toggle the theme */}
             <input
                 type="checkbox"
-                value=""
                 className="sr-only peer"
                 onChange={onChangeBtn}
-                checked= {themeMode === 'dark'}
+                checked={themeMode === 'dark'}   // checkbox ON if theme is dark
             />
+
+            {/* 4️⃣ Beautiful sliding toggle UI (Tailwind CSS) */}
             <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 
             peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full 
             peer dark:bg-gray-700 peer-checked:after:translate-x-full 
@@ -28,8 +37,10 @@ export default function ThemeBtn() {
             after:border after:rounded-full after:h-5 after:w-5 after:transition-all 
             dark:border-gray-600 peer-checked:bg-blue-600">
             </div>
-            <span className="ml-3 text-sm font-medium text-gray-900">Toggle Theme</span>
+
+            <span className="ml-3 text-sm font-medium text-gray-900">
+                Toggle Theme
+            </span>
         </label>
     );
 }
-
